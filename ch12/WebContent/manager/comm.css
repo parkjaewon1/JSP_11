@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+table { width: 100%; background-color: #E1FFE1;
+	border: 1px solid blue; }
+th { background-color: #FFE6EB; padding: 15px; 	 }
+th, td { border-bottom: 1px dotted blue; }
+td { padding: 13px; }
+body { background-color: #FAE6B9; font-family: 굴림체; 
+	font-size: 1em; }
+td:hover { background-color: green;  color: white; }
+caption { font-size: 25px; line-height: 150%; }
