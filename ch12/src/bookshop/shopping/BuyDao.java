@@ -58,10 +58,12 @@ public class BuyDao {
             reg_date = new Timestamp(System.currentTimeMillis());
             todayDate = reg_date.toString();
             compareDate = todayDate.substring(0, 4) + todayDate.substring(5, 7) + todayDate.substring(8, 10);
+            // 구매번호 생성 또는 sequence
             sql = "select nvl(max(buy_id),0) from buy";
             pstmt = conn.prepareStatement(sql);            
             rs = pstmt.executeQuery();
             if (rs.next()) buyId =  rs.getInt(1) + 1;
+            // 테이블 여러개를 수정/삭제/입력
             conn.setAutoCommit(false);
             for(int i=0; i<lists.size();i++){
             	//해당 아이디에 대한 cart테이블 레코드를을 가져온후 buy테이블에 추가
@@ -103,6 +105,7 @@ public class BuyDao {
                 pstmt.executeUpdate(); 
                 buyId++;
             }
+            // 장바구니 데이터 삭제
             sql = "delete from cart where buyer=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
