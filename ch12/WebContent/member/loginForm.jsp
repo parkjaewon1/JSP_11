@@ -9,7 +9,7 @@
 <table><caption>로그인</caption>
 	<tr><th>아이디</th><td><input type="text" name="id" 
 		required="required"></td></tr>
-	<tr><th>암호</th><td><input type="password" name="passwd"
+	<tr><th>암호</th><td><input type="password" name="password"
 		required="required"></td></tr>
 	<tr><th colspan="2"><input type="submit" value="확인"></th></tr>
 </table></form>

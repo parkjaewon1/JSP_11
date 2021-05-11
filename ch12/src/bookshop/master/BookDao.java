@@ -145,25 +145,22 @@ public class BookDao {
                 pstmt.setString(1, book_kind);
             }
         	rs = pstmt.executeQuery();
-
-            if (rs.next()) {
-                bookList = new ArrayList<Book>();
-                do{
-                     Book book= new Book();
-                     book.setBook_id(rs.getInt("book_id"));
-                     book.setBook_kind(rs.getString("book_kind"));
-                     book.setBook_title(rs.getString("book_title"));
-                     book.setBook_price(rs.getInt("book_price"));
-                     book.setBook_count(rs.getInt("book_count"));
-                     book.setAuthor(rs.getString("author"));
-                     book.setPublishing_com(rs.getString("publishing_com"));
-                     book.setPublishing_date(rs.getString("publishing_date"));
-                     book.setBook_image(rs.getString("book_image"));
-                     book.setDiscount_rate(rs.getInt("discount_rate"));
-                     book.setReg_date(rs.getTimestamp("reg_date"));
-                    
-                     bookList.add(book);
-			    }while(rs.next());
+            bookList = new ArrayList<Book>();
+            while(rs.next()){
+                Book book= new Book();
+                book.setBook_id(rs.getInt("book_id"));
+                book.setBook_kind(rs.getString("book_kind"));
+                book.setBook_title(rs.getString("book_title"));
+                book.setBook_price(rs.getInt("book_price"));
+                book.setBook_count(rs.getInt("book_count"));
+                book.setAuthor(rs.getString("author"));
+                book.setPublishing_com(rs.getString("publishing_com"));
+                book.setPublishing_date(rs.getString("publishing_date"));
+                book.setBook_image(rs.getString("book_image"));
+                book.setDiscount_rate(rs.getInt("discount_rate"));
+                book.setReg_date(rs.getTimestamp("reg_date"));
+                   
+                bookList.add(book);
 			}
         } catch(Exception e) {System.out.println(e.getMessage());
         } finally {
@@ -246,11 +243,12 @@ public class BookDao {
     public int updateBook(Book book, int bookId) {
         Connection conn = null;    PreparedStatement pstmt = null;
         String sql, sql1;                int result = 0;        
-        try { conn = getConnection();            
+        try { conn = getConnection();  
+        // image가 있는 경우
             sql = "update book set book_kind=?,book_title=?,book_price=?,book_count=?,author=? ";
             sql += ",publishing_com=?,publishing_date=?,book_content=?,discount_rate=?,book_image=?";
             sql += " where book_id=?";  
-            
+        // 이미지가 없는 경우    수정하지 않으면 먼저 이미지를 가지고 있는다
             sql1 = "update book set book_kind=?,book_title=?,book_price=?,book_count=?,author=? ";
             sql1 += ",publishing_com=?,publishing_date=?,book_content=?,discount_rate=?";
             sql1 += " where book_id=?"; 

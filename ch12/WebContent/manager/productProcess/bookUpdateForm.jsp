@@ -75,10 +75,13 @@
         </select>일 --%>
      </td>
   </tr>
+<!--  이미지와 textarea는 value로 저장된 값을 보여주기가 안된다 -->
+<!--  이미지는 다시 선택하거나 null로 보내야 한다 -->
   <tr> <td>이미지</td> <td>
         <input type="file" name="book_image" value="<%=book.getBook_image() %>"><%=book.getBook_image() %></td>
   </tr>
   <tr><td>내 용</td> <td>
+<!--   textarea는 <textarea><</textarea>사이에 갑을 보여주면 변경 가능하다 -->
      <textarea name="book_content" rows="13" cols="40"><%=book.getBook_content() %></textarea> </td>
   </tr>
  <tr><td>할인율</td> <td>

@@ -2,7 +2,7 @@ package bookshop.shopping;
 import java.sql.Date;
 public class Member {
 	private String id;
-	private String passwd;
+	private String password;
 	private String name;
 	private String address;
 	private String tel;
@@ -13,9 +13,12 @@ public class Member {
 	public void setDel(String del) {	this.del = del;	}
 	public String getId() {		return id;	}
 	public void setId(String id) {	this.id = id;	}
-	public String getPasswd() {	return passwd;	}
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
+
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getName() {	return name;	}
 	public void setName(String name) {	this.name = name;	}

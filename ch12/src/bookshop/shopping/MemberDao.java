@@ -52,7 +52,7 @@ public class MemberDao {
 		try {conn  = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member.getId());
-			pstmt.setString(2, member.getPasswd());
+			pstmt.setString(2, member.getPassword());
 			pstmt.setString(3, member.getName());
 			pstmt.setString(4, member.getAddress());
 			pstmt.setString(5, member.getTel());
@@ -70,14 +70,14 @@ public class MemberDao {
 		int result = 0;	Connection conn = null;
 		PreparedStatement pstmt = null; ResultSet rs = null;
 		String sql = 
-			"select passwd from member2 where id=? and del!='y'";
+			"select password from member2 where id=? and del!='y'";
 		try {
 			conn  = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs    = pstmt.executeQuery();
 			if (rs.next()) {
-				// String dbPass = rs.getString("passwd");
+				// String dbPass = rs.getString("password");
 				String dbPass = rs.getString(1);
 				if (dbPass.equals(passwd)) result = 1;
 				else result = 0;
@@ -102,7 +102,7 @@ public class MemberDao {
 			rs    = pstmt.executeQuery();
 			if (rs.next()) {
 				mem.setId(rs.getString("id"));
-				mem.setPasswd(rs.getString("passwd"));
+				mem.setPassword(rs.getString("password"));
 				mem.setName(rs.getString("name"));
 				mem.setAddress(rs.getString("address"));
 				mem.setTel(rs.getString("tel"));
@@ -119,11 +119,11 @@ public class MemberDao {
 	public int update(Member member) {
 		int result = 0;	Connection conn = null;
 		PreparedStatement pstmt = null; 
-		String sql="update member2 set passwd=?,name=?,"+
+		String sql="update member2 set password=?,name=?,"+
 				"address=?,tel=? where id=?";
 		try {conn  = getConnection();
 			pstmt = conn.prepareStatement(sql);			
-			pstmt.setString(1, member.getPasswd());
+			pstmt.setString(1, member.getPassword());
 			pstmt.setString(2, member.getName());
 			pstmt.setString(3, member.getAddress());
 			pstmt.setString(4, member.getTel());
@@ -176,7 +176,7 @@ public class MemberDao {
 			while(rs.next()) { 
 				Member mem = new Member();
 				mem.setId(rs.getString("id"));
-				mem.setPasswd(rs.getString("passwd"));
+				mem.setPassword(rs.getString("password"));
 				mem.setName(rs.getString("name"));
 				mem.setAddress(rs.getString("address"));
 				mem.setTel(rs.getString("tel"));

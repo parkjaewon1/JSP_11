@@ -2,6 +2,7 @@ create table manager (
 	managerId varchar2(12) primary key, 
 	managerPasswd varchar2(12) not null
 );
+
 select * from member2;
 insert into manager values ('master','1234');
 create sequence book_seq;
@@ -21,11 +22,13 @@ create table book (
 	reg_date date
 );
 
+
 create table bank (
 	account varchar2(30) primary key, 
 	bank varchar2(16) not null, 
 	name varchar2(12) not null
 );
+
 
 insert into bank values('111-111-1111','신한','길동');
 insert into bank values ('222-2222-2222','국민', '설현');
@@ -57,3 +60,5 @@ create table buy (
 	deliveryAddress varchar2(80), 
 	sanction varchar2(12) default '준비중' 
 );
+
+alter table member2 add(del char(1));

@@ -4,9 +4,9 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title></head><body>
 <%	String id = request.getParameter("id");
-	String passwd = request.getParameter("passwd");
+	String password = request.getParameter("password");
 	MemberDao md = MemberDao.getInstance();
-	int result   = md.loginChk(id, passwd); 
+	int result   = md.loginChk(id, password); 
 	if (result > 0) {
 		session.setAttribute("id", id);
 		response.sendRedirect("main.jsp");
